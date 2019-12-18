@@ -1,4 +1,4 @@
-import { FETCH_DATA_REQUESTED, FETCH_CHAR_DATA_REQUESTED, FETCH_DATA_FAILED, FETCH_DATA_SUCCEEDED, FETCH_MORE_SUCCEDDED, FETCH_SEARCH_SUCCEDDED, FETCH_CHAR_DATA_SUCCEDED } from './types';
+import { FETCH_DATA_REQUESTED, FETCH_CHAR_DATA_REQUESTED, FETCH_DATA_FAILED, FETCH_CHAR_DATA_FAILED, FETCH_DATA_SUCCEEDED, FETCH_MORE_SUCCEDDED, FETCH_SEARCH_SUCCEDDED, FETCH_CHAR_DATA_SUCCEDED } from './types';
 import axios from 'axios';
 const BASE_URL = 'https://api.jikan.moe/v3/search/anime?limit=16';
 
@@ -65,13 +65,11 @@ export function fetchCharData(url) {
         });
         axios.get(`https://cors-anywhere.herokuapp.com/${url}`)
             .then(data => {
-                console.log(data);
-                debugger;
                 dispatch({ type: FETCH_CHAR_DATA_SUCCEDED, payload: { data: data.data } });
             })
             .catch(error => {
                 dispatch({
-                    type: FETCH_DATA_FAILED,
+                    type: FETCH_CHAR_DATA_FAILED,
                     payload: { error: error }
                 })
             });

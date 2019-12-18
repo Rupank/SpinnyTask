@@ -1,4 +1,4 @@
-import { FETCH_DATA_SUCCEEDED, FETCH_DATA_FAILED, FETCH_DATA_REQUESTED, FETCH_MORE_SUCCEDDED, FETCH_SEARCH_SUCCEDDED, FETCH_CHAR_DATA_SUCCEDED, FETCH_CHAR_DATA_REQUESTED } from '../actions/types';
+import { FETCH_DATA_SUCCEEDED, FETCH_DATA_FAILED, FETCH_DATA_REQUESTED, FETCH_MORE_SUCCEDDED, FETCH_SEARCH_SUCCEDDED, FETCH_CHAR_DATA_SUCCEDED, FETCH_CHAR_DATA_REQUESTED, FETCH_CHAR_DATA_FAILED } from '../actions/types';
 
 const initialState = {
     items: [],
@@ -25,9 +25,11 @@ export default function (state = initialState, action) {
         case FETCH_MORE_SUCCEDDED:
             return { items: [...state.items, ...action.payload.data], searchInput: action.payload.input, isLoading: false, error: '', page: action.payload.pageNo }
         case FETCH_CHAR_DATA_REQUESTED:
-            return { ...state, charInfo: '' }
+            return { ...state, charInfo: '', isLoading: true }
         case FETCH_CHAR_DATA_SUCCEDED:
-            return { ...state, charInfo: action.payload.data }
+            return { ...state, charInfo: action.payload.data, isLoading: false }
+        case FETCH_CHAR_DATA_FAILED:
+            return { ...state, charInfo: action.payload.data, isLoading: false, error: action.payload.error.message }
         default:
             return state;
     }
