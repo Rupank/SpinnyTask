@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
         case FETCH_DATA_REQUESTED:
             return { ...state, isLoading: true }
         case FETCH_DATA_FAILED:
-            return { error: action.payload.error.message, isLoading: false }
+            return { error: action.payload.error.message, isLoading: false, page: 1, searchInput: 'test' }
         case FETCH_DATA_SUCCEEDED:
             return { ...state, items: action.payload.data, isLoading: false, error: '' }
         case FETCH_SEARCH_SUCCEDDED:
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
         case FETCH_CHAR_DATA_SUCCEDED:
             return { ...state, charInfo: action.payload.data, isLoading: false }
         case FETCH_CHAR_DATA_FAILED:
-            return { ...state, charInfo: action.payload.data, isLoading: false, error: action.payload.error.message }
+            return { ...state, charInfo: action.payload.data, isLoading: false, error: action.payload.error.message, page: 1, searchInput: 'test' }
         default:
             return state;
     }
