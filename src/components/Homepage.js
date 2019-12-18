@@ -7,7 +7,7 @@ import { getData, getPending, getError, getPage, getInput } from '../reducers/pr
 import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 
-export class HomePage extends Component {
+class HomePage extends Component {
 
     constructor(props) {
         super(props)

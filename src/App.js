@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HomePage from './components/HomePage';
+import HomePage from './components/Homepage';
 import { Route, Switch } from 'react-router-dom';
 import AnimeInfoPage from './components/AnimeInfoPage';
 
 
-function App() {
+export default function App() {
   return (
     <Switch>
       <Route exact path='/' component={HomePage} />
@@ -13,5 +13,3 @@ function App() {
     </Switch>
   );
 }
-
-export default App;
