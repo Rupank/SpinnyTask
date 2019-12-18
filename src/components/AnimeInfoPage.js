@@ -13,7 +13,7 @@ function AnimeInfoPage(props) {
     return (
         <div>
             {error && <div>{error}</div>}
-            {isLoading && <div>Lodaing...</div>}
+            {isLoading && <div>Loading...</div>}
             <div dangerouslySetInnerHTML={{ __html: infoHTML }} />
         </div>
     )
